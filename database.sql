@@ -8,3 +8,5 @@ CREATE TABLE students (
 
 -- some data
 INSERT INTO students (github_name) VALUES ('kdszafranski'), ('DoctorHowser');
+
+UPDATE students SET github_name = $1 WHERE id = $2;

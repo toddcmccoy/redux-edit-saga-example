@@ -8,10 +8,10 @@ function EditForm(props) {
   const history = useHistory();
   const editStudent = useSelector((store) => store.editStudent);
 
-  function handleChange(event) {
+  function handleChange(event, property) {
     dispatch({ 
                 type: 'EDIT_ONCHANGE', 
-                payload: { property: 'github_name', value: event.target.value }
+                payload: { property: property, value: event.target.value }
             });
 
   }
@@ -39,11 +39,12 @@ function EditForm(props) {
   return (
     <>
       <h2>Edit Student</h2>
+      <p>We are editing this student: {editStudent.github_name} with id: {editStudent.id}</p>
       <form onSubmit={handleSubmit}>
         <input
-          onChange={(event) => handleChange(event)}
+          onChange={(event) => handleChange(event, 'github_name')}
           placeholder='GitHub username'
-          value={editStudent.github_name}
+          value={editStudent.github_name} //very important
         />
         <input type='submit' value='Update Student' />
       </form>
